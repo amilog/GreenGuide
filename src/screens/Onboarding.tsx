@@ -1,8 +1,8 @@
 import { FlatList, StyleSheet, TouchableOpacity, View } from "react-native";
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { AppDispatch } from "../redux/store";
 import { useDispatch } from "react-redux";
-import { setStatus } from "../redux/onboard/OnboardSlice";
+import { getStatus, setStatus } from "../redux/onboard/OnboardSlice";
 import OnboardingIndicator from "../components/OnboardingIndicator";
 import SkipButton from "../assets/icons/skipButton";
 import OnboardingItem from "../components/OnboardingItem";
@@ -13,6 +13,9 @@ const Onboarding = ({ navigation }: any) => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const dispatch = useDispatch<AppDispatch>();
   const slidersRef = useRef<FlatList>(null);
+  useEffect(() => {
+    dispatch(getStatus());
+  }, []);
 
   const handleNext = () => {
     if (currentIndex < OnboardingData.length - 1) {
@@ -20,16 +23,10 @@ const Onboarding = ({ navigation }: any) => {
       setCurrentIndex(currentIndex + 1);
     }
     if (currentIndex === OnboardingData.length - 1) {
-      dispatch(setStatus(true)).then(() => {
-        navigation.replace("Tabs");
+      dispatch(setStatus(true)).then((res) => {
+        console.log(res);
+        navigation.replace("Home");
       });
-    }
-  };
-
-  const handlePrev = () => {
-    if (currentIndex > 0) {
-      slidersRef.current?.scrollToIndex({ index: currentIndex - 1 });
-      setCurrentIndex(currentIndex - 1);
     }
   };
 
@@ -52,7 +49,7 @@ const Onboarding = ({ navigation }: any) => {
         />
       </View>
       <View style={styles.buttonContainer}>
-        {currentIndex === 2 ? (
+        {currentIndex === 0 ? (
           <ThemedButton
             name="bruce"
             type="primary"
@@ -65,7 +62,6 @@ const Onboarding = ({ navigation }: any) => {
           <ThemedButton
             name="bruce"
             type="primary"
-            progress = {true}
             onPress={handleNext}
             style={styles.button}
           >

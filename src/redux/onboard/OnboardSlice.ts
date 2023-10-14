@@ -35,6 +35,8 @@ const onboardSlice = createSlice({
     builder.addCase(getStatus.fulfilled, (state, action) => {
       state.loading = false;
       state.isOnboarded = action.payload === "true";
+      console.log("onboardSlice", action.payload);
+      
     });
     builder.addCase(setStatus.pending, (state) => {
       state.loading = true;

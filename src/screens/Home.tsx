@@ -1,8 +1,9 @@
 import { StyleSheet, Text, View, Image } from "react-native";
 import React from "react";
 import PercentIcon from "../assets/icons/percent";
+import ThermometerIcon from "../assets/icons/thermometerIcon";
 
-const Home = () => {
+const Home = ({ navigation }: any) => {
   return (
     <View style={styles.container}>
       <View style={styles.view}>
@@ -11,14 +12,22 @@ const Home = () => {
           style={styles.image}
         />
         <View style={styles.infoColumn}>
-          <View style={styles.infoContainer}>
-            <Text style={styles.textLight}>43</Text>
-            <PercentIcon style={styles.percentIcon} />
+          <View style={styles.view1}>
+            <View style={styles.infoContainer}>
+              <Text style={styles.textLight}>{`18°`}</Text>
+              <ThermometerIcon style={styles.thermometerIcon} />
+            </View>
+            <Text style={styles.infoText}>temperature</Text>
           </View>
-          <View style={styles.infoContainer}>
-            <Text style={styles.textLight}>43</Text>
-            <PercentIcon style={styles.percentIcon} />
+
+          <View style={styles.view1}>
+            <View style={styles.infoContainer}>
+              <Text style={styles.textLight}>{`27`}</Text>
+              <PercentIcon style={styles.percentIcon} />
+            </View>
+            <Text style={styles.infoText}>humidity</Text>
           </View>
+
           <View style={styles.infoContainer}>
             <Text style={styles.textLight}>43</Text>
             <PercentIcon style={styles.percentIcon} />
@@ -63,7 +72,7 @@ const styles = StyleSheet.create({
   textLight: {
     color: "#fff",
     fontSize: 30,
-    fontWeight: "300",
+    fontWeight: "800",
     textAlign: "center",
   },
   view: {
@@ -83,5 +92,20 @@ const styles = StyleSheet.create({
   percentIcon: {
     width: 25,
     height: 25,
+  },
+  thermometerIcon: {
+    width: 8,
+    height: 39,
+    marginLeft: 5,
+  },
+  infoText: {
+    color: "#fff",
+    fontSize: 18,
+    fontWeight: "300",
+    textAlign: "center",
+  },
+  view1: {
+    alignItems: "center",
+    justifyContent: "space-between",
   },
 });
