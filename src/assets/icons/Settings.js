@@ -1,7 +1,7 @@
 import * as React from "react"
 import { Settings } from "react-native"
 import Svg, { G, Path, Defs, ClipPath } from "react-native-svg"
-const Settings = (props) => (
+const SettingsIcon = (props) => (
   <Svg xmlns="http://www.w3.org/2000/svg" fill="none" {...props}>
     <G
       stroke="#fff"
@@ -20,4 +20,5 @@ const Settings = (props) => (
     </Defs>
   </Svg>
 )
-export default Settings
+export default SettingsIcon
+

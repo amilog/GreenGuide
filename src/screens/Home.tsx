@@ -1,14 +1,37 @@
 import { StyleSheet, Text, View, Image } from "react-native";
 import React from "react";
+import PercentIcon from "../assets/icons/percent";
 
 const Home = () => {
   return (
     <View style={styles.container}>
-      <Image
-        source={require("../assets/image/plant.png")}
-        style={styles.image}
-      />
-      <View style={styles.overlay}></View>
+      <View style={styles.view}>
+        <Image
+          source={require("../assets/image/plant.png")}
+          style={styles.image}
+        />
+        <View style={styles.infoColumn}>
+          <View style={styles.infoContainer}>
+            <Text style={styles.textLight}>43</Text>
+            <PercentIcon style={styles.percentIcon} />
+          </View>
+          <View style={styles.infoContainer}>
+            <Text style={styles.textLight}>43</Text>
+            <PercentIcon style={styles.percentIcon} />
+          </View>
+          <View style={styles.infoContainer}>
+            <Text style={styles.textLight}>43</Text>
+            <PercentIcon style={styles.percentIcon} />
+          </View>
+          <View style={styles.infoContainer}>
+            <Text style={styles.textLight}>43</Text>
+            <PercentIcon style={styles.percentIcon} />
+          </View>
+        </View>
+      </View>
+      <View style={styles.overlay}>
+        <Text>Salam</Text>
+      </View>
     </View>
   );
 };
@@ -31,12 +54,34 @@ const styles = StyleSheet.create({
     borderTopRightRadius: 35,
   },
   image: {
-    width: 320,
-    height: 320,
-    top: 80,
-    zIndex: 2,
+    width: 340,
+    height: 370,
+    top: 50,
     bottom: 0,
-    backgroundColor: "red",
     marginLeft: -100,
+  },
+  textLight: {
+    color: "#fff",
+    fontSize: 30,
+    fontWeight: "300",
+    textAlign: "center",
+  },
+  view: {
+    flexDirection: "row",
+    alignItems: "center",
+    zIndex: 2,
+  },
+  infoColumn: {
+    flexDirection: "column",
+    marginLeft: 20,
+    gap: 20,
+  },
+  infoContainer: {
+    flexDirection: "row",
+    alignItems: "center",
+  },
+  percentIcon: {
+    width: 25,
+    height: 25,
   },
 });
