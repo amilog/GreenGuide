@@ -1,9 +1,20 @@
-import { StyleSheet, Text, View, Image } from "react-native";
-import React from "react";
+import React, { useState } from "react";
+import { View, Text, StyleSheet, Image } from "react-native";
 import PercentIcon from "../assets/icons/percent";
 import ThermometerIcon from "../assets/icons/thermometerIcon";
+import LottieView from "lottie-react-native";
 
 const Home = ({ navigation }: any) => {
+  const [isWaterOn, setIsWaterOn] = useState(true);
+
+  const turnWaterOn = () => {
+    setIsWaterOn(true);
+  };
+
+  const turnWaterOff = () => {
+    setIsWaterOn(false);
+  };
+
   return (
     <View style={styles.container}>
       <View style={styles.view}>
@@ -19,7 +30,7 @@ const Home = ({ navigation }: any) => {
             </View>
             <Text style={styles.infoText}>temperature</Text>
           </View>
-
+          <View style={{ height: 18 }} />
           <View style={styles.view1}>
             <View style={styles.infoContainer}>
               <Text style={styles.textLight}>{`27`}</Text>
@@ -27,14 +38,20 @@ const Home = ({ navigation }: any) => {
             </View>
             <Text style={styles.infoText}>humidity</Text>
           </View>
-
-          <View style={styles.infoContainer}>
-            <Text style={styles.textLight}>43</Text>
-            <PercentIcon style={styles.percentIcon} />
-          </View>
-          <View style={styles.infoContainer}>
-            <Text style={styles.textLight}>43</Text>
-            <PercentIcon style={styles.percentIcon} />
+          <View style={{ height: 5 }} />
+          <View style={styles.pumpContainer}>
+            <LottieView
+              autoPlay={isWaterOn}
+              loop={isWaterOn}
+              style={{
+                width: 100,
+                height: 100,
+              }}
+              source={require("../assets/animation/animation_water.json")}
+            />
+            <Text style={styles.pumpText}>
+              {isWaterOn ? "turn on" : "turn off"}
+            </Text>
           </View>
         </View>
       </View>
@@ -45,12 +62,10 @@ const Home = ({ navigation }: any) => {
   );
 };
 
-export default Home;
-
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#21B792",
+    backgroundColor: "#0A8163",
   },
   overlay: {
     position: "absolute",
@@ -64,8 +79,8 @@ const styles = StyleSheet.create({
   },
   image: {
     width: 340,
-    height: 370,
-    top: 50,
+    height: 390,
+    top: 40,
     bottom: 0,
     marginLeft: -100,
   },
@@ -83,7 +98,6 @@ const styles = StyleSheet.create({
   infoColumn: {
     flexDirection: "column",
     marginLeft: 20,
-    gap: 20,
   },
   infoContainer: {
     flexDirection: "row",
@@ -108,4 +122,17 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "space-between",
   },
+  pumpContainer: {
+    alignItems: "center",
+    justifyContent: "space-between",
+    width: 80,
+  },
+  pumpText: {
+    color: "#fff",
+    fontSize: 18,
+    fontWeight: "300",
+    textAlign: "center",
+  },
 });
+
+export default Home;
