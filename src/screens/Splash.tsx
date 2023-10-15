@@ -6,6 +6,7 @@ import { getStatus } from "../redux/onboard/OnboardSlice";
 import uuid from "react-native-uuid";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import SettingsIcon from "../assets/icons/settings";
+import LottieView from "lottie-react-native";
 
 const Splash = ({ navigation }: any) => {
   const fadeAnimation = new Animated.Value(0);
@@ -93,54 +94,17 @@ const Splash = ({ navigation }: any) => {
   return (
     <View style={styles.container}>
       <View style={styles.background} />
-      <SettingsIcon style={styles.centeredIcon0} />
-      <Animated.Image
-        source={require("../assets/image/Onboarding1.png")}
-        style={[
-          styles.backgroundImage,
-          {
-            opacity: fadeAnimation,
-          },
-        ]}
-      />
-      <Animated.View
-        style={[
-          styles.centeredIcon,
-          {
-            opacity: iconOpacity,
-          },
-        ]}
-      >
-        <SettingsIcon />
-      </Animated.View>
-      <Animated.View
-        style={[
-          styles.centeredText,
-          {
-            transform: [{ translateX: textTranslateX }],
-            opacity: textOpacity,
-          },
-        ]}
-      >
-        <SettingsIcon style={styles.centeredText} />
-      </Animated.View>
-      {startFromCodeTextAnimation[0] && (
-        <Animated.View
-          style={[
-            styles.fromCodeTextContainer,
-            {
-              transform: [{ translateY: fromCodeTextTranslateY }],
-            },
-          ]}
-        >
-          <SettingsIcon style={styles.fromCodeTextContainer} />
-        </Animated.View>
-      )}
+      <View style={styles.animationContainer}>
+        <LottieView
+          autoPlay={true}
+          loop={false}
+          style={styles.animation}
+          source={require("../assets/animation/animation_lnrb9krk.json")}
+        />
+      </View>
     </View>
   );
 };
-
-export default Splash;
 
 const styles = StyleSheet.create({
   container: {
@@ -149,44 +113,19 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   background: {
-    width: "100%",
-    height: "100%",
-  },
-  backgroundImage: {
     position: "absolute",
     width: "100%",
     height: "100%",
   },
-  centeredIcon: {
-    position: "absolute",
+  animationContainer: {
+    flex: 1,
     justifyContent: "center",
     alignItems: "center",
-    transform: [{ translateX: 0 }, { translateY: -2 }],
-    width: 144,
-    height: 36,
   },
-  centeredIcon0: {
-    position: "absolute",
-    justifyContent: "center",
-    alignItems: "center",
-    transform: [{ translateX: 0 }, { translateY: -2 }],
-    width: 144,
-    height: 36,
-  },
-  centeredText: {
-    position: "absolute",
-    justifyContent: "center",
-    alignItems: "center",
-    transform: [{ translateX: 8.5 }, { translateY: 0 }],
-    width: 117,
-    height: 26.28,
-  },
-  fromCodeTextContainer: {
-    position: "absolute",
-    transform: [{ translateX: 1 }, { translateY: 32 }],
-    justifyContent: "center",
-    alignItems: "center",
-    width: 136,
-    height: 13,
+  animation: {
+    width: 200,
+    height: 200,
   },
 });
+
+export default Splash;

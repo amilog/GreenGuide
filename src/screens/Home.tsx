@@ -4,10 +4,36 @@ import PercentIcon from "../assets/icons/percent";
 import ThermometerIcon from "../assets/icons/thermometerIcon";
 import LottieView from "lottie-react-native";
 import { UsersModel } from "../models/dataModels";
+import { LineChart } from "react-native-chart-kit";
+import { Dimensions } from "react-native";
+
+const screenWidth = Dimensions.get("window").width;
+
+const chartConfig = {
+  backgroundGradientFrom: "#0A8163",
+  backgroundGradientFromOpacity: 0,
+  backgroundGradientTo: "#FFFFFF",
+  backgroundGradientToOpacity: 0.5,
+  color: (opacity = 1) => `rgba(0, 80, 0, ${opacity})`,
+  strokeWidth: 2,
+  barPercentage: 0.5,
+  useShadowColorFromDataset: false,
+};
+
+const data = {
+  labels: ["10", "11", "12", "13", "14", "15"],
+  datasets: [
+    {
+      data: [20, 22, 18, 23, 18, 16],
+      color: (opacity = 1) => `rgba(10, 129, 99, ${opacity})`,
+      strokeWidth: 5,
+    },
+  ],
+  legend: ["Statistic"],
+};
 
 const Home = ({ item }: { item: UsersModel }) => {
   const [isWaterOn, setIsWaterOn] = useState(true);
-
 
   return (
     <View style={styles.container}>
@@ -50,7 +76,14 @@ const Home = ({ item }: { item: UsersModel }) => {
         </View>
       </View>
       <View style={styles.overlay}>
-        <Text>Salam</Text>
+       <View style={styles.chartView}>
+       <LineChart
+          data={data}
+          width={screenWidth}
+          height={420}
+          chartConfig={chartConfig}
+        />
+       </View>
       </View>
     </View>
   );
@@ -126,6 +159,13 @@ const styles = StyleSheet.create({
     fontSize: 18,
     fontWeight: "300",
     textAlign: "center",
+  },
+  chartView: {
+    marginTop: 25,
+    height: 200,
+    width: screenWidth - 40,
+    borderRadius: 16,
+    backgroundColor: "#fff",
   },
 });
 

@@ -16,7 +16,7 @@ export default function App() {
     <Provider store={store}>
       <NavigationContainer>
         <View style={styles.container}>
-          <StatusBar style="auto" />
+        <StatusBar translucent style="dark" />
           <Stack.Navigator
             screenOptions={{
               headerShown: false,
