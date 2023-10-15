@@ -1,11 +1,10 @@
 import React, { useState, useEffect } from "react";
-import { View, StyleSheet, Animated, Easing } from "react-native"; // Animated eklemeyi unutmayın
+import { View, StyleSheet, Animated, Easing } from "react-native";
 import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch, RootState } from "../redux/store";
 import { getStatus } from "../redux/onboard/OnboardSlice";
 import uuid from "react-native-uuid";
 import AsyncStorage from "@react-native-async-storage/async-storage";
-import SettingsIcon from "../assets/icons/settings";
 import LottieView from "lottie-react-native";
 
 const Splash = ({ navigation }: any) => {

@@ -32,7 +32,13 @@ const data = {
   legend: ["Statistic"],
 };
 
-const Home = ({ item }: { item: UsersModel }) => {
+
+type HomeProps = {
+  item: UsersModel;
+};
+
+const Home: React.FC<HomeProps> = ({ item }) => {
+
   const [isWaterOn, setIsWaterOn] = useState(true);
 
   return (
@@ -45,7 +51,7 @@ const Home = ({ item }: { item: UsersModel }) => {
         <View style={styles.infoColumn}>
           <View style={styles.view1}>
             <View style={styles.infoContainer}>
-              <Text style={styles.textLight}>{`18°`}</Text>
+              <Text style={styles.textLight}>{`19°`}</Text>
               <ThermometerIcon style={styles.thermometerIcon} />
             </View>
             <Text style={styles.infoText}>temperature</Text>
@@ -53,7 +59,7 @@ const Home = ({ item }: { item: UsersModel }) => {
           <View style={{ height: 18 }} />
           <View style={styles.view1}>
             <View style={styles.infoContainer}>
-              <Text style={styles.textLight}>14</Text>
+              <Text style={styles.textLight}>76</Text>
               <PercentIcon style={styles.percentIcon} />
             </View>
             <Text style={styles.infoText}>humidity</Text>

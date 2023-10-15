@@ -4,7 +4,7 @@ import { Dimensions } from "react-native";
 
 const SCREEN_WIDTH = Dimensions.get("window").width;
 const SCREEN_HEIGHT = Dimensions.get("window").height;
-const textContainerHeightPercentage = SCREEN_HEIGHT < 800 ? '55%' : '45%';
+//const textContainerHeightPercentage = SCREEN_HEIGHT < 800 ? '55%' : '45%';
 
 const OnboardingItem = ({ item }: any) => {
   return (
@@ -45,7 +45,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: "10%",
     gap: 12,
     height: "15%",
-    marginBottom: 320,
+    marginBottom: 350,
   },
   content: {
     color: "#575757",

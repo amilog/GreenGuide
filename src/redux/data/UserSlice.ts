@@ -15,13 +15,13 @@ const initialState: UserState = {
   error: null,
 };
 
-export const getUsersState = createAsyncThunk("team/getUser", async () => {
+export const getUsersState = createAsyncThunk("users/getUser", async () => {
   const response = await api.getUsers();
   return response;
 });
 
 export const getUserByIdState = createAsyncThunk(
-  "team/getUserById",
+  "users/getUserById",
   async (id: string) => {
     const response = await api.getUserById(id);
     return response;

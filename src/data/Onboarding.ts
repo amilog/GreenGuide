@@ -1,16 +1,16 @@
 export const OnboardingData = [
     {
       id: 1,
-      title: "Green Guide'a Xoş Gəlmisiniz!",
+      title: "Welcome to Green Guide!",
       content:
         "",
       image: require("../assets/image/Onboarding1.png"),
     },
     {
       id: 2,
-      title: "Green Guide nədir?",
+      title: "What is green guide?",
       content:
-        "Green Guide, Azərbaycanda yerləşən təbiət abidələrinin məlumatlarını toplayan və bu məlumatları istifadəçilərə təqdim edən bir mobil tətbiqdir.",
+        "Green Guide brings together environmental friends to develop products that benefit the environment.",
       image: require("../assets/image/Onboarding1.png"),
     },
   ];

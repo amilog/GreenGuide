@@ -4,7 +4,6 @@ import { AppDispatch } from "../redux/store";
 import { useDispatch } from "react-redux";
 import { getStatus, setStatus } from "../redux/onboard/OnboardSlice";
 import OnboardingIndicator from "../components/OnboardingIndicator";
-import SkipButton from "../assets/icons/skipButton";
 import OnboardingItem from "../components/OnboardingItem";
 import { OnboardingData } from "../data/Onboarding";
 import { ThemedButton } from "react-native-really-awesome-button";
