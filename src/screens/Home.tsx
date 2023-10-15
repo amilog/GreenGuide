@@ -3,17 +3,11 @@ import { View, Text, StyleSheet, Image } from "react-native";
 import PercentIcon from "../assets/icons/percent";
 import ThermometerIcon from "../assets/icons/thermometerIcon";
 import LottieView from "lottie-react-native";
+import { UsersModel } from "../models/dataModels";
 
-const Home = ({ navigation }: any) => {
+const Home = ({ item }: { item: UsersModel }) => {
   const [isWaterOn, setIsWaterOn] = useState(true);
 
-  const turnWaterOn = () => {
-    setIsWaterOn(true);
-  };
-
-  const turnWaterOff = () => {
-    setIsWaterOn(false);
-  };
 
   return (
     <View style={styles.container}>
@@ -33,7 +27,7 @@ const Home = ({ navigation }: any) => {
           <View style={{ height: 18 }} />
           <View style={styles.view1}>
             <View style={styles.infoContainer}>
-              <Text style={styles.textLight}>{`27`}</Text>
+              <Text style={styles.textLight}>14</Text>
               <PercentIcon style={styles.percentIcon} />
             </View>
             <Text style={styles.infoText}>humidity</Text>
